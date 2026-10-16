@@ -592,33 +592,13 @@ namespace WinFormsApp1
 
 
         // Play the existing WAV greeting, if the file exists.
-        private void PlayGreeting()
+
+        public void PlayGreeting()
         {
-            try
-            {
-                string audioPath = Path.Combine(
-                    Application.StartupPath, "greeting_1.wav");
-
-                if (!File.Exists(audioPath))
-                {
-                    AddMessage("Black Vault",
-                        "Greeting audio was not found. You can still use the chatbot.");
-                    return;
-                }
-
-                greetingPlayer?.Stop();
-                greetingPlayer?.Dispose();
-
-                greetingPlayer = new SoundPlayer(audioPath);
-                greetingPlayer.LoadAsync();
-                greetingPlayer.Play();
-            }
-            catch (Exception)
-            {
-                AddMessage("Black Vault",
-                    "The greeting audio could not be played.");
-            }
+            SoundPlayer player = new SoundPlayer("C:\\Users\\Student\\source\\repos\\WinFormsApp1\\WinFormsApp1\\Resources\\greeting_1.wav");
+            player.Play();
         }
+
 
         private void ExitApplication()
         {
@@ -633,17 +613,17 @@ namespace WinFormsApp1
         }
 
         // Keep these existing event methods for compatibility with the Designer.
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
             StartChat();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        public void pictureBox1_Click(object sender, EventArgs e)
         {
             // The existing logo is kept as part of the dashboard.
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
             // Kept in case the Designer or project still references this event.
         }
